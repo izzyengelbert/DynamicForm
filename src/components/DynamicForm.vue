@@ -1,5 +1,5 @@
 <template>
-  <form action method="post">
+  <div>
     <div v-for="(field, index) in formFields" :key="index">
       <DynamicFormField
         :name="index"
@@ -10,23 +10,31 @@
         :required="field.required"
         :placeholder="field.placeholder"
         :labelName="field.labelName"
-      ></DynamicFormField>
+        :data="field.data"
+        :model="model"
+      />
     </div>
-  </form>
+      <button @click="save">Submit</button>
+  </div>
 </template>
 
 <script>
+import DynamicFormField from '@/components/DynamicFormField.vue';
+
 export default {
   name: 'DynamicForm',
-  data() {
-    return {
-      items: {
-        test: { message: 'Foo' }, test2: { message: 'Bar' }
-      }
-    };
+  components: {
+    DynamicFormField
   },
   props: {
-    formFields: Object
+    formFields: Object,
+    saveData: Object,
+    model: Object
+  },
+  methods: {
+    save() {
+      console.log(this.model);
+    },
   }
 };
 </script>
