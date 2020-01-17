@@ -23,8 +23,7 @@ export default {
   },
   methods: {
     async getFormData() {
-      // const api = 'http://13.126.43.216:3000/schema/3';
-      const api = 'http://localhost:3000/formSchema';
+      const api = 'http://13.126.43.216:3000/schema/3';
       try {
         const response = await this.$http.get(api, {
           headers: {
@@ -33,7 +32,7 @@ export default {
           }
         });
         console.log(response.data);
-        return response.data;
+        return response.data.schema;
       } catch (error) {
         console.error(error);
         throw error;
@@ -41,13 +40,11 @@ export default {
     },
     saveData(savedData) {
       const data = savedData;
-      // const api = 'http://13.126.43.216:3000/schema/3';
       const api = 'http://localhost:3000/formData';
       this.$http.post(api, data);
     },
     createModel() {
       const model = {};
-      console.log(this.formData);
 
       /* eslint-disable no-restricted-globals */
       /* eslint-disable no-restricted-syntax */
@@ -68,9 +65,8 @@ export default {
     }
   },
   async mounted() {
-    this.$data.formData = await this.getFormData();
+    this.formData = await this.getFormData();
     this.model = this.createModel();
-    console.log(this.model);
   }
 };
 </script>

@@ -2,6 +2,7 @@
   <label :for="name">
     {{ labelName }}
     <select v-if="isSelect" v-model="model[name]">
+      <option disabled value="">Please select one</option>
       <option v-for="(value,index) in data.defaultValue" :value="value" :key="index">
         {{value}}
       </option>
@@ -23,7 +24,20 @@
         {{value}}
       </div>
     </div>
-    <input v-else :type="type" :placeholder="placeholder" :name="name" v-model="model[name]" />
+    <div v-else-if="isRadio">
+      <div v-for="(value,index) in data.defaultValue" :key="index">
+        <input
+          :type="type"
+          :placeholder="placeholder"
+          :name="name" :value="value"
+          v-model="model[name]"
+        >
+        {{value}}
+      </div>
+    </div>
+    <div v-else>
+      <input :type="type" :placeholder="placeholder" :name="name" v-model="model[name]" />
+    </div>
   </label>
 </template>
 <script>
@@ -50,6 +64,15 @@ export default {
     },
     isCheckbox() {
       return this.type === 'checkbox';
+    },
+    isText() {
+      return this.type === 'text';
+    },
+    isEmail() {
+      return this.type === 'email';
+    },
+    isRadio() {
+      return this.type === 'radio';
     }
   }
 };

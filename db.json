@@ -18,6 +18,21 @@
       "placeholder": "Enter your email",
       "labelName": "Email"
     },
+    "mailingList": {
+      "type": "radio",
+      "validate": false,
+      "rule": "",
+      "warningMessage": "",
+      "required": true,
+      "placeholder": "",
+      "labelName": "Mailing List",
+      "data": {
+        "defaultValue": [
+          "Yes",
+          "No"
+        ]
+      }
+    },
     "phoneNumber": {
       "type": "text",
       "validate": true,
@@ -86,5 +101,60 @@
       }
     }
   },
-  "formData": {}
+  "formData": [
+    {
+      "name": "Izzy Engelbert Simanjuntak",
+      "email": "izzyengelbert@gmail.com",
+      "phoneNumber": "0",
+      "mailingList": "Yes",
+      "gender": "Female",
+      "dateOfBirth": "2020-01-01",
+      "address": "Jl. Rajawali 7 No. 8",
+      "jobExperience": [
+        "Frontend Developer",
+        "UI/UX Engineer"
+      ],
+      "id": 1
+    },
+    {
+      "name": "Izzy Engelbert Simanjuntak",
+      "email": "izzyengelbert@gmail.com",
+      "phoneNumber": "",
+      "mailingList": "No",
+      "gender": "Male",
+      "dateOfBirth": "2020-01-09",
+      "address": "Jl. Rajawali 7 No. 8",
+      "jobExperience": [
+        "Data Analyst"
+      ],
+      "id": 2
+    },
+    {
+      "name": "Izzy Engelbert Simanjuntak",
+      "email": "izzyengelbert@gmail.com",
+      "phoneNumber": "",
+      "mailingList": "No",
+      "gender": "Male",
+      "dateOfBirth": "2020-01-09",
+      "address": "Jl. Rajawali 7 No. 8",
+      "jobExperience": [
+        "Data Analyst"
+      ],
+      "id": 3
+    },
+    {
+      "name": "Izzy Engelbert Simanjuntak",
+      "email": "izzyengelbert@gmail.com",
+      "phoneNumber": "",
+      "mailingList": "No",
+      "gender": "Male",
+      "dateOfBirth": "2020-01-09",
+      "address": "Jl. Rajawali 7 No. 8",
+      "jobExperience": [
+        "Data Analyst",
+        "DevOps Engineer"
+      ],
+      "id": 4
+    }
+  ]
 }
