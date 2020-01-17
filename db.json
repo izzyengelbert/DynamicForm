@@ -1,0 +1,89 @@
+{
+  "formSchema": {
+    "name": {
+        "type": "text",
+        "validate": true,
+        "rule": "/^[A-Za-z ]*$/",
+        "warningMessage": "Please enter a valid name",
+        "required": true,
+        "placeholder": "Enter your name",
+        "labelName": "Name"
+    },
+    "email": {
+        "type": "email",
+        "validate": true,
+        "rule": "/^w+([.-]?w+)@w+([.-]?w+)(.w{2,3})+$/",
+        "warningMessage": "Please enter a valid email address",
+        "required": true,
+        "placeholder": "Enter your email",
+        "labelName": "Email"
+    },
+    "phoneNumber": {
+        "type": "text",
+        "validate": true,
+        "rule": "/^[0-9]{12,12}$/",
+        "warningMessage": "Please enter a valid phone number",
+        "required": true,
+        "placeholder": "Enter your phone number",
+        "labelName": "Phone Number"
+    },
+    "gender": {
+        "type": "select",
+        "validate": false,
+        "rule": "",
+        "warningMessage": "",
+        "required": true,
+        "placeholder": "",
+        "labelName": "Gender",
+        "data": {
+            "defaultValue": [
+                "Male",
+                "Female",
+                "Rather not say"
+            ]
+        }
+    },
+    "dateOfBirth": {
+        "type": "date",
+        "validate": false,
+        "rule": "",
+        "warningMessage": "",
+        "required": true,
+        "placeholder": "",
+        "labelName": "Date of Birth",
+        "data": {
+            "minDate": "1990-01-31"
+        }
+    },
+    "address": {
+        "type": "textarea",
+        "validate": false,
+        "rule": "",
+        "warningMessage": "",
+        "required": true,
+        "placeholder": "",
+        "labelName": "Address"
+    },
+    "jobExperience": {
+        "type": "checkbox",
+        "validate": false,
+        "rule": "",
+        "warningMessage": "",
+        "required": false,
+        "placeholder": "",
+        "labelName": "Address",
+        "data": {
+            "defaultValue": [
+                "Frontend Developer",
+                "Backend Developer",
+                "Web Developer",
+                "UI/UX Engineer",
+                "Database Administrator",
+                "Software Quality Engineer",
+                "Data Analyst",
+                "DevOps Engineer"
+            ]
+        }
+    }
+}
+}
