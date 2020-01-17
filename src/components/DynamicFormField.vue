@@ -1,15 +1,25 @@
 <template>
   <label :for="name">
     {{ labelName }}
-    <select v-if="isSelect">
+    <select v-if="isSelect" v-model="model[name]">
       <option v-for="(value,index) in data.defaultValue" :value="value" :key="index">
         {{value}}
       </option>
     </select>
-    <textarea v-else-if="isTextArea" rows="4" :placeholder="placeholder" :name="name" />
+    <textarea
+      v-else-if="isTextArea"
+      rows="4"
+      :placeholder="placeholder"
+      :name="name" v-model="model[name]"
+    />
     <div v-else-if="isCheckbox">
       <div v-for="(value,index) in data.defaultValue" :key="index">
-        <input :type="type" :placeholder="placeholder" :name="name" :value="value">
+        <input
+          :type="type"
+          :placeholder="placeholder"
+          :name="name" :value="value"
+          v-model="model[name]"
+        >
         {{value}}
       </div>
     </div>

@@ -28,7 +28,7 @@ export default {
   },
   props: {
     formFields: Object,
-    saveData: Object,
+    saveData: Function,
     model: Object
   },
   methods: {
