@@ -65,12 +65,6 @@ export default {
     isCheckbox() {
       return this.type === 'checkbox';
     },
-    isText() {
-      return this.type === 'text';
-    },
-    isEmail() {
-      return this.type === 'email';
-    },
     isRadio() {
       return this.type === 'radio';
     }

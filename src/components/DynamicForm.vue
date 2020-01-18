@@ -33,6 +33,8 @@ export default {
   },
   methods: {
     save() {
+      console.log(this.model);
+
       this.saveData(this.model);
     },
   }

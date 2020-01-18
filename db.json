@@ -155,6 +155,20 @@
         "DevOps Engineer"
       ],
       "id": 4
+    },
+    {
+      "name": "Arya Wiranata",
+      "email": "arya_wiranata@ymail.com",
+      "phoneNumber": "081252223998",
+      "mailingList": "Yes",
+      "gender": "Male",
+      "dateOfBirth": "2021-02-19",
+      "address": "Jalan jancok",
+      "jobExperience": [
+        "Frontend Developer",
+        "Web Developer"
+      ],
+      "id": 5
     }
   ]
 }
