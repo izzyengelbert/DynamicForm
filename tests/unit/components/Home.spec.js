@@ -21,7 +21,28 @@ describe('Home', () => {
           warningMessage: 'Please enter a valid name',
           required: true,
           placeholder: 'Enter your name',
-          labelName: 'Name'
+          labelName: 'Name',
+        },
+        jobExperience: {
+          type: 'checkbox',
+          validate: false,
+          rule: '',
+          warningMessage: '',
+          required: false,
+          placeholder: '',
+          labelName: 'jobExperience',
+          data: {
+            defaultValue: [
+              'Frontend Developer',
+              'Backend Developer',
+              'Web Developer',
+              'UI/UX Engineer',
+              'Database Administrator',
+              'Software Quality Engineer',
+              'Data Analyst',
+              'DevOps Engineer'
+            ]
+          }
         }
       }
     };
@@ -44,7 +65,7 @@ describe('Home', () => {
     mockGet.mockResolvedValue({ data });
 
     mockData = jest.fn();
-    mockData.mockRejectedValue({ userData });
+    mockData.mockResolvedValue(userData);
 
     wrapper = shallowMount(Home, {
       mocks: {
@@ -74,17 +95,28 @@ describe('Home', () => {
     const errorResponse = {
       response: {
         status: 400,
-        message: 'test'
+        message: 'failed to fetch data!'
       }
     };
     mockGet.mockRejectedValueOnce(errorResponse);
-    // console.log(wrapper.vm.$http.get);
 
     await expect(wrapper.vm.getFormData()).rejects.toEqual(errorResponse);
   });
 
   it('should post data to the server', async () => {
-    await wrapper.vm.saveData(mockData);
+    await wrapper.vm.saveData(userData);
     expect(wrapper.vm.$http.post).toHaveBeenCalled();
+  });
+
+  it('should throw error if failed to post data', async () => {
+    const errorResponse = {
+      response: {
+        status: 401,
+        message: 'failed to send data!'
+      }
+    };
+    mockData.mockRejectedValueOnce(errorResponse);
+
+    await expect(wrapper.vm.saveData(userData)).rejects.toEqual(errorResponse);
   });
 });
