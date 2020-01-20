@@ -33,7 +33,7 @@ describe('DynamicForm', () => {
   });
 
   it('renders the DynamicFormField component', () => {
-    const actualResult = wrapper.contains(DynamicFormField);
-    expect(actualResult).toBeTruthy();
+    expect(wrapper.contains(DynamicFormField)).toBeTruthy();
   });
+
 });

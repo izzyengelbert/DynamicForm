@@ -1,8 +1,8 @@
 <template>
   <label :for="name">
     {{ labelName }}
-    <select v-if="isSelect" v-model="model[name]">
-      <option disabled value="">Please select one</option>
+    <select v-if="isSelect" v-model="model[name]" :required="required">
+      <option disabled value>Please select one</option>
       <option v-for="(value,index) in data.defaultValue" :value="value" :key="index">
         {{value}}
       </option>
@@ -11,16 +11,20 @@
       v-else-if="isTextArea"
       rows="4"
       :placeholder="placeholder"
-      :name="name" v-model="model[name]"
+      :name="name"
+      v-model="model[name]"
+      :required="required"
     />
     <div v-else-if="isCheckbox">
       <div v-for="(value,index) in data.defaultValue" :key="index">
         <input
           :type="type"
           :placeholder="placeholder"
-          :name="name" :value="value"
+          :name="name"
+          :value="value"
           v-model="model[name]"
-        >
+          :required="required"
+        />
         {{value}}
       </div>
     </div>
@@ -29,14 +33,34 @@
         <input
           :type="type"
           :placeholder="placeholder"
-          :name="name" :value="value"
+          :name="name"
+          :value="value"
           v-model="model[name]"
-        >
+          :required="required"
+        />
         {{value}}
       </div>
     </div>
     <div v-else>
-      <input :type="type" :placeholder="placeholder" :name="name" v-model="model[name]" />
+      <div>
+        <input
+          v-if="validate"
+          :type="type"
+          :placeholder="placeholder"
+          :name="name"
+          v-model="model[name]"
+          :pattern="rule"
+          :required="required"
+        />
+        <input
+          v-else
+          :type="type"
+          :placeholder="placeholder"
+          :name="name"
+          v-model="model[name]"
+          :required="required"
+        />
+      </div>
     </div>
   </label>
 </template>
