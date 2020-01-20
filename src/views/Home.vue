@@ -34,7 +34,7 @@ export default {
 
         return response.data.schema;
       } catch (error) {
-        console.error(error);
+        console.log(error);
         throw error;
       }
     },
