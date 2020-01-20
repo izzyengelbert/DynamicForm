@@ -10,7 +10,7 @@ describe('DynamicFormField', () => {
 
   it('render an input with attributes type "text", name "name", pattern "/^[A-Za-z ]*$/", placeholder "Enter your name", required "true", label name "Name"', () => {
     const propsData = {
-      name: 'name',
+      name: 'Name',
       type: 'text',
       validate: true,
       rule: '/^[A-Za-z ]*$/',
