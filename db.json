@@ -274,6 +274,17 @@
         "Frontend Developer"
       ],
       "id": 15
+    },
+    {
+      "name": "Izzy Engelbert Simanjuntak",
+      "email": "izzyengelbert@gmail.com",
+      "phoneNumber": "081234567890",
+      "mailingList": "Yes",
+      "gender": "Male",
+      "dateOfBirth": "2020-01-07",
+      "address": "Jl. Rajawali 7 No. 8",
+      "jobExperience": [],
+      "id": 16
     }
   ]
 }

@@ -44,7 +44,7 @@ export default {
       this.errors = [];
       const formFieldsKeys = Object.keys(this.formFields);
       formFieldsKeys.forEach((key) => {
-        if (this.formFields[key].required && (this.model[key] === null || this.model[key] === [])) {
+        if (this.formFields[key].required && ((this.model[key] === null || this.model[key] === '') || this.model[key] === [])) {
           this.errors.push(`${this.formFields[key].labelName} is required`);
         }
       });

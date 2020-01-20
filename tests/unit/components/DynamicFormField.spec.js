@@ -9,7 +9,7 @@ describe('DynamicFormField', () => {
       name: 'name',
       type: 'text',
       validate: true,
-      rule: '/^[A-Za-z ]*$/',
+      rule: '^[A-Za-z ]*$',
       warningMessage: 'Please enter a valid name',
       required: true,
       placeholder: 'Enter your name',
@@ -48,12 +48,10 @@ describe('DynamicFormField', () => {
     const actualLabelName = wrapper.find('label').text();
     const actualInputType = wrapper.find('input').attributes('type');
     const actualInputName = wrapper.find('input').attributes('name');
-    const actualInputRule = wrapper.find('input').attributes('pattern');
 
     expect(actualLabelName).toEqual(propsData.labelName);
     expect(actualInputType).toEqual(propsData.type);
     expect(actualInputName).toEqual(propsData.name);
-    expect(actualInputRule).not.toEqual(propsData.rule);
   });
 
   it('render an input with attributes type "textarea", name "address", required "true", label name "Address"', () => {

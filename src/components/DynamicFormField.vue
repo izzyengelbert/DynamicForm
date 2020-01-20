@@ -1,7 +1,7 @@
 <template>
   <label :for="name">
     {{ labelName }}
-    <select v-if="isSelect" v-model="model[name]" :name="name">
+    <select v-if="isSelect" v-model="model[name]" :name="name" @change="validation">
       <option disabled value>Please select one</option>
       <option v-for="(value,index) in data.defaultValue" :value="value" :key="index">
         {{value}}
@@ -13,6 +13,7 @@
       :placeholder="placeholder"
       :name="name"
       v-model="model[name]"
+      @change="validation"
     />
     <div v-else-if="isCheckbox">
       <div v-for="(value,index) in data.defaultValue" :key="index">
@@ -22,6 +23,7 @@
           :name="name"
           :value="value"
           v-model="model[name]"
+          @change="validation"
         />
         {{value}}
       </div>
@@ -34,6 +36,7 @@
           :name="name"
           :value="value"
           v-model="model[name]"
+          @change="validation"
         />
         {{value}}
       </div>
@@ -45,11 +48,11 @@
         v-model="model[name]"
         :min="data.minDate"
         :max="data.maxDate"
+        @change="validation"
       />
     </div>
     <div v-else>
       <div>
-        <div v-if="validate">
           <input
             :type="type"
             :placeholder="placeholder"
@@ -58,13 +61,10 @@
             :pattern="rule"
             @change="validation"
           />
-        </div>
-        <input v-else :type="type" :placeholder="placeholder" :name="name"
-        v-model="model[name]"/>
       </div>
     </div>
     <span>
-      {{error}}
+      {{ error }}
     </span>
   </label>
 </template>
@@ -91,18 +91,22 @@ export default {
   },
   methods: {
     validation() {
+      const regex = new RegExp(this.rule);
+      if (this.required && this.model[this.name] === '') {
+        this.error = `${this.labelName} is required`;
+      }
       if (!this.validate) {
+        return;
+      }
+      console.log(regex.test(this.model[this.name]));
+      if (!regex.test(this.model[this.name]) && this.model[this.name] !== '') {
+        this.error = this.warningMessage;
+      }
+      if (regex.test(this.model[this.name]) && this.model[this.name] !== '') {
         this.error = '';
       }
-      if (this.required) {
-        this.error = this.warningMessage;
-      }
-      const regex = new RegExp(this.rule);
-      if (!regex.test(this.model[this.name])) {
-        this.error = this.warningMessage;
-      }
-      console.log(this.model);
       console.log(this.error);
+      console.log(this.model[this.name], 'test');
     }
   },
   computed: {
