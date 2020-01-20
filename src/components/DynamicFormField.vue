@@ -1,7 +1,7 @@
 <template>
   <label :for="name">
     {{ labelName }}
-    <select v-if="isSelect" v-model="model[name]" :required="required">
+    <select v-if="isSelect" v-model="model[name]" :name="name">
       <option disabled value>Please select one</option>
       <option v-for="(value,index) in data.defaultValue" :value="value" :key="index">
         {{value}}
@@ -13,7 +13,6 @@
       :placeholder="placeholder"
       :name="name"
       v-model="model[name]"
-      :required="required"
     />
     <div v-else-if="isCheckbox">
       <div v-for="(value,index) in data.defaultValue" :key="index">
@@ -23,7 +22,6 @@
           :name="name"
           :value="value"
           v-model="model[name]"
-          :required="required"
         />
         {{value}}
       </div>
@@ -36,37 +34,49 @@
           :name="name"
           :value="value"
           v-model="model[name]"
-          :required="required"
         />
         {{value}}
       </div>
     </div>
+    <div v-else-if="isDate">
+      <input
+        :type="type"
+        :name="name"
+        v-model="model[name]"
+        :min="data.minDate"
+        :max="data.maxDate"
+      />
+    </div>
     <div v-else>
       <div>
-        <input
-          v-if="validate"
-          :type="type"
-          :placeholder="placeholder"
-          :name="name"
-          v-model="model[name]"
-          :pattern="rule"
-          :required="required"
-        />
-        <input
-          v-else
-          :type="type"
-          :placeholder="placeholder"
-          :name="name"
-          v-model="model[name]"
-          :required="required"
-        />
+        <div v-if="validate">
+          <input
+            :type="type"
+            :placeholder="placeholder"
+            :name="name"
+            v-model="model[name]"
+            :pattern="rule"
+            @change="validation"
+          />
+        </div>
+        <input v-else :type="type" :placeholder="placeholder" :name="name"
+        v-model="model[name]"/>
       </div>
     </div>
+    <span>
+      {{error}}
+    </span>
   </label>
 </template>
 <script>
+
 export default {
   name: 'DynamicFormField',
+  data() {
+    return {
+      error: null
+    };
+  },
   props: {
     name: String,
     type: String,
@@ -78,6 +88,22 @@ export default {
     labelName: String,
     data: Object,
     model: Object
+  },
+  methods: {
+    validation() {
+      if (!this.validate) {
+        this.error = '';
+      }
+      if (this.required) {
+        this.error = this.warningMessage;
+      }
+      const regex = new RegExp(this.rule);
+      if (!regex.test(this.model[this.name])) {
+        this.error = this.warningMessage;
+      }
+      console.log(this.model);
+      console.log(this.error);
+    }
   },
   computed: {
     isSelect() {
@@ -91,6 +117,9 @@ export default {
     },
     isRadio() {
       return this.type === 'radio';
+    },
+    isDate() {
+      return this.type === 'date';
     }
   }
 };

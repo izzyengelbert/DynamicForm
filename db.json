@@ -107,12 +107,11 @@
       "email": "izzyengelbert@gmail.com",
       "phoneNumber": "0",
       "mailingList": "Yes",
-      "gender": "Female",
+      "gender": "Male",
       "dateOfBirth": "2020-01-01",
       "address": "Jl. Rajawali 7 No. 8",
       "jobExperience": [
-        "Frontend Developer",
-        "UI/UX Engineer"
+        "Frontend Developer"
       ],
       "id": 1
     },
@@ -120,12 +119,12 @@
       "name": "Izzy Engelbert Simanjuntak",
       "email": "izzyengelbert@gmail.com",
       "phoneNumber": "",
-      "mailingList": "No",
+      "mailingList": "Yes",
       "gender": "Male",
-      "dateOfBirth": "2020-01-09",
+      "dateOfBirth": "2020-01-01",
       "address": "Jl. Rajawali 7 No. 8",
       "jobExperience": [
-        "Data Analyst"
+        "Frontend Developer"
       ],
       "id": 2
     },
@@ -133,42 +132,148 @@
       "name": "Izzy Engelbert Simanjuntak",
       "email": "izzyengelbert@gmail.com",
       "phoneNumber": "",
-      "mailingList": "No",
+      "mailingList": "Yes",
       "gender": "Male",
-      "dateOfBirth": "2020-01-09",
+      "dateOfBirth": "2020-01-01",
       "address": "Jl. Rajawali 7 No. 8",
       "jobExperience": [
-        "Data Analyst"
+        "Frontend Developer"
       ],
       "id": 3
     },
     {
-      "name": "Izzy Engelbert Simanjuntak",
-      "email": "izzyengelbert@gmail.com",
+      "name": "",
+      "email": "",
       "phoneNumber": "",
-      "mailingList": "No",
-      "gender": "Male",
-      "dateOfBirth": "2020-01-09",
-      "address": "Jl. Rajawali 7 No. 8",
-      "jobExperience": [
-        "Data Analyst",
-        "DevOps Engineer"
-      ],
+      "mailingList": "",
+      "gender": "",
+      "dateOfBirth": "",
+      "address": "",
+      "jobExperience": [],
       "id": 4
     },
     {
-      "name": "Arya Wiranata",
-      "email": "arya_wiranata@ymail.com",
-      "phoneNumber": "081252223998",
+      "name": "df",
+      "email": "asdf",
+      "phoneNumber": "asdf",
+      "mailingList": null,
+      "gender": null,
+      "dateOfBirth": null,
+      "address": null,
+      "jobExperience": [],
+      "id": 5
+    },
+    {
+      "name": "df",
+      "email": "asdf@asdf.com",
+      "phoneNumber": null,
+      "mailingList": null,
+      "gender": null,
+      "dateOfBirth": null,
+      "address": null,
+      "jobExperience": [],
+      "id": 6
+    },
+    {
+      "name": "df",
+      "email": "asdf@asdf.com",
+      "phoneNumber": null,
+      "mailingList": null,
+      "gender": null,
+      "dateOfBirth": null,
+      "address": null,
+      "jobExperience": [],
+      "id": 7
+    },
+    {
+      "name": "df",
+      "email": "asdf@asdf.com",
+      "phoneNumber": null,
+      "mailingList": null,
+      "gender": null,
+      "dateOfBirth": null,
+      "address": null,
+      "jobExperience": [],
+      "id": 8
+    },
+    {
+      "name": "df",
+      "email": "asdf@asdf.com",
+      "phoneNumber": null,
+      "mailingList": null,
+      "gender": null,
+      "dateOfBirth": null,
+      "address": null,
+      "jobExperience": [],
+      "id": 9
+    },
+    {
+      "name": "df",
+      "email": "asdf@asdf.com",
+      "phoneNumber": null,
+      "mailingList": null,
+      "gender": null,
+      "dateOfBirth": null,
+      "address": null,
+      "jobExperience": [],
+      "id": 10
+    },
+    {
+      "name": null,
+      "email": null,
+      "phoneNumber": null,
+      "mailingList": null,
+      "gender": null,
+      "dateOfBirth": null,
+      "address": null,
+      "jobExperience": [],
+      "id": 11
+    },
+    {
+      "name": "Izzy Engelbert Simanjuntak",
+      "email": "izzyengelbert@gmail.com",
+      "phoneNumber": null,
+      "mailingList": null,
+      "gender": null,
+      "dateOfBirth": null,
+      "address": "Jl. Rajawali 7 No. 8",
+      "jobExperience": [],
+      "id": 12
+    },
+    {
+      "name": "Izzy Engelbert Simanjuntak",
+      "email": "izzyengelbert@gmail.com",
+      "phoneNumber": "081",
       "mailingList": "Yes",
       "gender": "Male",
-      "dateOfBirth": "2021-02-19",
-      "address": "Jalan jancok",
+      "dateOfBirth": "2019-12-31",
+      "address": "Jl. Rajawali 7 No. 8",
+      "jobExperience": [],
+      "id": 13
+    },
+    {
+      "name": "Izzy Engelbert Simanjuntak",
+      "email": "izzyengelbert@gmail.com",
+      "phoneNumber": "081",
+      "mailingList": "Yes",
+      "gender": "Male",
+      "dateOfBirth": "2019-12-31",
+      "address": "Jl. Rajawali 7 No. 8",
+      "jobExperience": [],
+      "id": 14
+    },
+    {
+      "name": "Izzy Engelbert Simanjuntak",
+      "email": "izzyengelbert@gmail.com",
+      "phoneNumber": "081",
+      "mailingList": "Yes",
+      "gender": "Male",
+      "dateOfBirth": "2019-12-31",
+      "address": "Jl. Rajawali 7 No. 8",
       "jobExperience": [
-        "Frontend Developer",
-        "Web Developer"
+        "Frontend Developer"
       ],
-      "id": 5
+      "id": 15
     }
   ]
 }

@@ -14,7 +14,10 @@
         :model="model"
       />
     </div>
-      <button @click="save">Submit</button>
+    <div v-for="error in errors" :key="error">
+      <span>{{ error }}</span>
+    </div>
+    <button @click="save">Submit</button>
   </div>
 </template>
 
@@ -26,6 +29,11 @@ export default {
   components: {
     DynamicFormField
   },
+  data() {
+    return {
+      errors: []
+    };
+  },
   props: {
     formFields: Object,
     saveData: Function,
@@ -33,8 +41,17 @@ export default {
   },
   methods: {
     save() {
-      this.saveData(this.model);
-    },
+      this.errors = [];
+      const formFieldsKeys = Object.keys(this.formFields);
+      formFieldsKeys.forEach((key) => {
+        if (this.formFields[key].required && (this.model[key] === null || this.model[key] === [])) {
+          this.errors.push(`${this.formFields[key].labelName} is required`);
+        }
+      });
+      if (this.errors.length === 0) {
+        this.saveData(this.model);
+      }
+    }
   }
 };
 </script>
