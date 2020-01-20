@@ -31,6 +31,7 @@ export default {
             'Content-Type': 'application/json'
           }
         });
+
         return response.data.schema;
       } catch (error) {
         console.error(error);
