@@ -4,9 +4,14 @@ import DynamicFormField from '@/components/DynamicFormField.vue';
 
 describe('DynamicForm', () => {
   // Now mount the component and you have the wrapper
-
-  it('renders the DynamicFormField component', () => {
-    const propsData = {
+  let wrapper;
+  let propsData;
+  let saveFunction;
+  let model;
+  beforeEach(() => {
+    saveFunction = jest.fn();
+    model = {};
+    propsData = {
       formFields: {
         name: {
           type: 'text',
@@ -26,13 +31,25 @@ describe('DynamicForm', () => {
           placeholder: 'Enter your email',
           labelName: 'Email'
         }
-      }
+      },
+      saveData: saveFunction,
+      model
     };
-    const wrapper = shallowMount(DynamicForm, {
-      propsData
-    });
+  });
+
+  it('renders the DynamicFormField component', () => {
+    wrapper = shallowMount(DynamicForm, { propsData });
 
     expect(wrapper.findAll(DynamicFormField).at(0).attributes('name')).toEqual('name');
     expect(wrapper.findAll(DynamicFormField).at(1).attributes('name')).toEqual('email');
+  });
+
+  it('call the save function on submit', () => {
+    wrapper = shallowMount(DynamicForm, { propsData });
+    const submitButton = wrapper.find('button');
+
+    submitButton.trigger('click');
+
+    expect(saveFunction).toHaveBeenCalledWith(model);
   });
 });

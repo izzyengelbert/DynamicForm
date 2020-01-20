@@ -10,7 +10,7 @@ describe('DynamicFormField', () => {
 
   it('render an input with attributes type "text", name "name", pattern "/^[A-Za-z ]*$/", placeholder "Enter your name", required "true", label name "Name"', () => {
     const propsData = {
-      name: 'Name',
+      name: 'name',
       type: 'text',
       validate: true,
       rule: '/^[A-Za-z ]*$/',
@@ -34,10 +34,5 @@ describe('DynamicFormField', () => {
     expect(actualInputName).toContain(propsData.name);
     expect(actualInputRule).toContain(propsData.rule);
     expect(actualInputRequired).toContain(propsData.required);
-  });
-
-
-  it('render ', () => {
-
   });
 });
