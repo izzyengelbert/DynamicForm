@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, mount } from '@vue/test-utils';
 import DynamicForm from '@/components/DynamicForm.vue';
 import DynamicFormField from '@/components/DynamicFormField.vue';
 
@@ -10,7 +10,10 @@ describe('DynamicForm', () => {
   let model;
   beforeEach(() => {
     saveFunction = jest.fn();
-    model = {};
+    model = {
+      name: null,
+      email: null
+    };
     propsData = {
       formFields: {
         name: {
@@ -45,11 +48,27 @@ describe('DynamicForm', () => {
   });
 
   it('call the save function on submit', () => {
-    wrapper = shallowMount(DynamicForm, { propsData });
+    wrapper = mount(DynamicForm, { propsData });
     const submitButton = wrapper.find('button');
+    const wrapperInput = wrapper.findAll('input');
+    console.log(wrapperInput.at(0).html());
+
+    wrapperInput.at(0).setValue('Name');
+    wrapperInput.at(1).setValue('name@email.com');
 
     submitButton.trigger('click');
 
     expect(saveFunction).toHaveBeenCalledWith(model);
+  });
+
+  it('call the save function on submit and errors should be "Name is required" and "Email is required"', async () => {
+    wrapper = mount(DynamicForm, { propsData });
+    const submitButton = wrapper.find('button');
+
+    submitButton.trigger('click');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.vm.$data.errors[0]).toEqual('Name is required');
+    expect(wrapper.vm.$data.errors[1]).toEqual('Email is required');
   });
 });

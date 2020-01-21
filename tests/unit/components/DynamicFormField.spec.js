@@ -30,6 +30,54 @@ describe('DynamicFormField', () => {
     expect(actualInputRule).toEqual(propsData.rule);
   });
 
+  it('render an error message "Name is required" when field is required', () => {
+    const propsData = {
+      name: 'name',
+      type: 'text',
+      validate: true,
+      rule: '^[A-Za-z ]*$',
+      warningMessage: 'Please enter a valid name',
+      required: true,
+      placeholder: 'Enter your name',
+      labelName: 'Name',
+      data: {},
+      model: {
+        name: ''
+      }
+    };
+    const wrapper = shallowMount(DynamicFormField, { propsData });
+    const wrapperSpan = wrapper.find('span');
+
+    wrapper.vm.validation();
+
+    expect(wrapperSpan.text()).toEqual('Name is required');
+  });
+
+  it('render an error message "Please input a valid name" when validation is not correct', () => {
+    const propsData = {
+      name: 'name',
+      type: 'text',
+      validate: true,
+      rule: '^[A-Za-z ]*$',
+      warningMessage: 'Please enter a valid name',
+      required: true,
+      placeholder: 'Enter your name',
+      labelName: 'Name',
+      data: {},
+      model: {
+        name: ''
+      }
+    };
+    const wrapper = shallowMount(DynamicFormField, { propsData });
+    const wrapperInput = wrapper.find('input');
+    const wrapperSpan = wrapper.find('span');
+
+    wrapperInput.setValue('test1');
+    wrapper.vm.validation();
+
+    expect(wrapperSpan.text()).toEqual(propsData.warningMessage);
+  });
+
   it('render an input with attributes type "text", name "name", placeholder "Enter your name", required "false", label name "Name"', () => {
     const propsData = {
       name: 'name',
@@ -208,5 +256,51 @@ describe('DynamicFormField', () => {
     expect(actualOptions.at(1).text()).toEqual(propsData.data.defaultValue[0]);
     expect(actualOptions.at(2).text()).toEqual(propsData.data.defaultValue[1]);
     expect(actualOptions.at(3).text()).toEqual(propsData.data.defaultValue[2]);
+  });
+
+  it('should not display validation error "Please enter a valid name" when validate is false', () => {
+    const propsData = {
+      name: 'name',
+      type: 'text',
+      validate: false,
+      rule: '^[A-Za-z ]*$',
+      warningMessage: 'Please enter a valid name',
+      required: true,
+      placeholder: 'Enter your name',
+      labelName: 'Name',
+      data: {},
+      model: {}
+    };
+    const wrapper = shallowMount(DynamicFormField, { propsData });
+    const wrapperInput = wrapper.find('input');
+
+    wrapperInput.setValue('Name1');
+    wrapperInput.trigger('change');
+    const errorMessage = wrapper.find('span').text();
+
+    expect(errorMessage).not.toEqual(propsData.warningMessage);
+  });
+
+  it('should not display validation error "Please enter a valid name" when validate is true and validation is correct', () => {
+    const propsData = {
+      name: 'name',
+      type: 'text',
+      validate: true,
+      rule: '^[A-Za-z ]*$',
+      warningMessage: 'Please enter a valid name',
+      required: true,
+      placeholder: 'Enter your name',
+      labelName: 'Name',
+      data: {},
+      model: {}
+    };
+    const wrapper = shallowMount(DynamicFormField, { propsData });
+    const wrapperInput = wrapper.find('input');
+
+    wrapperInput.setValue('Name');
+    wrapperInput.trigger('change');
+    const errorMessage = wrapper.find('span').text();
+
+    expect(errorMessage).not.toEqual(propsData.warningMessage);
   });
 });
