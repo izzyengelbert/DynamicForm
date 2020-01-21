@@ -60,7 +60,7 @@ export default {
       // eslint-disable-next-line no-restricted-syntax
       // eslint-disable-next-line
       for ( name in this.formData) {
-        model[name] = '';
+        model[name] = null;
 
         if (this.formData[name].type === 'checkbox') {
           model[name] = [];
