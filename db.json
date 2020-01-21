@@ -101,5 +101,21 @@
       }
     }
   },
-  "formData": []
+  "formData": [
+    {
+      "name": "Arya Wiranata",
+      "email": "arya_wiranata@ymail.com",
+      "phoneNumber": "081252223998",
+      "mailingList": "No",
+      "gender": "Male",
+      "dateOfBirth": "2021-02-22",
+      "address": "Address",
+      "jobExperience": [
+        "Frontend Developer",
+        "Backend Developer",
+        "Web Developer"
+      ],
+      "id": 1
+    }
+  ]
 }
