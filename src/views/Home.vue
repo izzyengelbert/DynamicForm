@@ -31,16 +31,23 @@ export default {
             'Content-Type': 'application/json'
           }
         });
+
         return response.data.schema;
       } catch (error) {
         console.error(error);
         throw error;
       }
     },
-    saveData(savedData) {
+    async saveData(savedData) {
       const data = savedData;
       const api = 'http://localhost:3000/formData';
-      this.$http.post(api, data);
+      try {
+        const response = await this.$http.post(api, data);
+        return response;
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
     },
     createModel() {
       const model = {};
